@@ -18,7 +18,7 @@
   font-family: "Courier New", Courier, monospace;
   font-size: x-large;
   font-weight: bolder;
-  padding: 0 3px;
+  margin: -1px;
   background-color: darkgray;
   margin-bottom: 10px;
 }
@@ -26,4 +26,11 @@
 .info {
   border-bottom: 2px solid lightgray;
   margin: 0 10px;
+}
+
+.centered {
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

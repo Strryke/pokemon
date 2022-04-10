@@ -5,14 +5,16 @@ import { getPokemon } from "./pokemon";
 function Pokedex() {
   const [pokemons, setPokemons] = useState([]);
   useEffect(() => {
-    getPokemon().then((data) => {
-      setPokemons(data);
-    });
+    async function fetchData() {
+      setPokemons(await getPokemon());
+    }
+    fetchData();
   }, []);
+  console.log("pls work");
 
   return (
     <div
-      className="wrapper row justify-content-center"
+      className="wrapper hi row justify-content-center"
       style={{ backgroundColor: "lightgray" }}
     >
       {pokemons &&

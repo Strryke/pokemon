@@ -32,8 +32,6 @@ const db = getFirestore();
 const googleProvider = new GoogleAuthProvider();
 
 const auth = getAuth();
-console.log(auth.currentUser);
-console.log();
 
 const signInWithGoogle = async () => {
   try {
@@ -43,14 +41,6 @@ const signInWithGoogle = async () => {
     alert(err.message);
   }
 };
-
-// const sendPokemon = (pokemon) => async () => {
-//   console.log("hello");
-//   await setDoc(doc(db, "users"), {
-//     pokemon,
-//   });
-//   console.log(pokemon);
-// };
 
 async function sendPokemon(pokemon) {
   const ref = doc(db, "users", auth.currentUser.uid);
@@ -68,7 +58,6 @@ async function getPokemon() {
   const ref = doc(db, "users", auth.currentUser.uid);
   const docSnap = await getDoc(ref);
   if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
     return docSnap.data().pokemons;
   } else {
     // doc.data() will be undefined in this case
@@ -82,11 +71,9 @@ function SignOut() {
     window.location.replace("/");
   };
   return (
-    auth.currentUser && (
-      <button className="btn btn-primary" onClick={onSignOut}>
-        Sign Out
-      </button>
-    )
+    <button className="nav-link active btn" onClick={onSignOut}>
+      Sign Out
+    </button>
   );
 }
 

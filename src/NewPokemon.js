@@ -6,8 +6,9 @@ import { sendPokemon } from "./firebase";
 function NewPokemon() {
   const [pokemon, setPokemon] = useState({});
   const [number, setNumber] = useState(0);
-  const [guess, setGuess] = useState();
+  const [guess, setGuess] = useState("");
   const [output, setOutput] = useState("Guess a number from 1-10");
+  const [numberGuess, setnumberGuess] = useState(1);
 
   useEffect(() => {
     setNumber(Math.floor(Math.random() * 10) + 1);
@@ -20,15 +21,28 @@ function NewPokemon() {
 
   const handleGuess = (e) => {
     e.preventDefault();
-    console.log(guess);
+    setnumberGuess(numberGuess + 1);
     if (guess == number) {
-      setOutput("You are correct!");
+      setOutput(`You are correct! ${pokemon.name} has been captured!`);
       sendPokemon(pokemon);
       setGuess("");
+      setTimeout(() => window.location.reload(), 2000);
     } else if (guess > number) {
       setOutput("Your guess is too high!");
+      if (numberGuess >= 3) {
+        setOutput(`Oh no! ${pokemon.name} has escaped!`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
     } else if (guess < number) {
       setOutput("Your guess is too low!");
+      if (numberGuess >= 3) {
+        setOutput(`Oh no! ${pokemon.name} has escaped!`);
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
+      }
     }
   };
 
@@ -37,6 +51,7 @@ function NewPokemon() {
       {pokemon && <PokemonCard props={pokemon} />}
       <div className="col-lg-3 mx-auto">
         {output}
+        <p>You have {`${4 - numberGuess} guesses remaining!`}</p>
         <div>
           <form action="" onSubmit={handleGuess}>
             <input

@@ -3,7 +3,7 @@ const axios = require("axios");
 const getPokemon = async () => {
   const pokedex = [];
   const response = await axios.get(
-    "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0"
+    "https://pokeapi.co/api/v2/pokemon?limit=30&offset=0"
   );
   response.data.results.forEach((pokemon) => {
     pokedex.push({
