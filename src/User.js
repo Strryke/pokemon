@@ -16,10 +16,15 @@ export default function User() {
   return (
     <>
       <TrainerCard />
-      {pokemons &&
-        pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.name} props={pokemon} />
-        ))}
+      <div
+        className="wrapper row justify-content-center"
+        style={{ backgroundColor: "lightgray" }}
+      >
+        {pokemons &&
+          pokemons.map((pokemon) => (
+            <PokemonCard key={pokemon.name} props={pokemon} />
+          ))}
+      </div>
     </>
   );
 }
