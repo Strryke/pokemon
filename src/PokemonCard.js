@@ -2,9 +2,9 @@ import React from "react";
 
 function PokemonCard(pokemon) {
   //   console.log("a");
-  console.log(pokemon.props.name);
+  //   console.log(pokemon.props.name);
   return (
-    <div className="col-lg-3 col-md-4 p-0">
+    <div className="col-lg-3 col-md-4 p-0 mx-auto">
       <div className="wrapper">
         <div className="row">
           <div className="col">
