@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getPokemon } from "./pokemon";
 import PokemonCard from "./PokemonCard";
 import { sendPokemon } from "./firebase";
+import "./styles.css";
 
 function NewPokemon() {
   const [pokemon, setPokemon] = useState({});
@@ -25,7 +26,6 @@ function NewPokemon() {
     if (guess == number) {
       setOutput(`You are correct! ${pokemon.name} has been captured!`);
       sendPokemon(pokemon);
-      setGuess("");
       setTimeout(() => window.location.reload(), 2000);
     } else if (guess > number) {
       setOutput("Your guess is too high!");
@@ -44,12 +44,15 @@ function NewPokemon() {
         }, 2000);
       }
     }
+    setGuess("");
   };
 
   return (
     <div className="container-sm justify-content-center">
-      {pokemon && <PokemonCard props={pokemon} />}
-      <div className="col-lg-3 mx-auto">
+      <div className="col-lg-4 mx-auto">
+        {pokemon && <PokemonCard props={pokemon} />}
+      </div>
+      <div className="col-lg-3 mx-auto ">
         {output}
         <p>You have {`${4 - numberGuess} guesses remaining!`}</p>
         <div>

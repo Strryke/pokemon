@@ -12,14 +12,23 @@ const getPokemon = async () => {
     });
   });
 
-  pokedex.forEach(async (pokemon) => {
+  for (const pokemon of pokedex) {
     const response = await axios.get(pokemon.url);
     pokemon["hp"] = response.data.stats[0].base_stat;
     pokemon["attack"] = response.data.stats[1].base_stat;
     pokemon["defense"] = response.data.stats[2].base_stat;
     pokemon["speed"] = response.data.stats[5].base_stat;
     pokemon["sprite"] = response.data.sprites.front_default;
-  });
+  }
+
+  // pokedex.forEach(async (pokemon) => {
+  //   const response = await axios.get(pokemon.url);
+  //   pokemon["hp"] = response.data.stats[0].base_stat;
+  //   pokemon["attack"] = response.data.stats[1].base_stat;
+  //   pokemon["defense"] = response.data.stats[2].base_stat;
+  //   pokemon["speed"] = response.data.stats[5].base_stat;
+  //   pokemon["sprite"] = response.data.sprites.front_default;
+  // });
 
   return pokedex;
 };

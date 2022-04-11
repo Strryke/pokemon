@@ -14,12 +14,14 @@ function Pokedex() {
 
   return (
     <div
-      className="wrapper hi row justify-content-center"
+      className="wrapper row justify-content-start"
       style={{ backgroundColor: "lightgray" }}
     >
       {pokemons &&
         pokemons.map((pokemon) => (
-          <PokemonCard key={pokemon.name} props={pokemon} />
+          <div className="col-lg-3 col-md-4 p-0">
+            <PokemonCard key={pokemon.name} props={pokemon} />
+          </div>
         ))}
     </div>
   );

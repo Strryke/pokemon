@@ -2,7 +2,7 @@ import React from "react";
 
 function PokemonCard(pokemon) {
   return (
-    <div className="col-lg-3 col-md-4 p-0 mx-auto">
+    <div className="">
       <div className="wrapper">
         <div className="row">
           <div className="col">
