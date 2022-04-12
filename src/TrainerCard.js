@@ -1,4 +1,5 @@
 import React from "react";
+// import logo from "/ash-ketchum-logo.png";
 
 function TrainerCard() {
   return (
@@ -13,7 +14,7 @@ function TrainerCard() {
           <div className="wrapper">
             <div className="text-center title-name">Pokemon Trainer</div>
             <img
-              src="https://archives.bulbagarden.net/media/upload/thumb/c/cd/Ash_JN.png/150px-Ash_JN.png"
+              src="/ash-ketchum-logo.png"
               alt=""
               className="d-block mx-auto"
             />
