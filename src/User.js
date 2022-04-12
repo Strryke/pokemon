@@ -18,13 +18,13 @@ export default function User() {
       <div className="mt-5 pt-5">
         <TrainerCard />
         <div
-          className="wrapper row justify-content-start"
+          className="wrapper row justify-content-start "
           style={{ backgroundColor: "lightgray" }}
         >
           {pokemons ? (
             pokemons.map((pokemon) => (
-              <div className="col-lg-3 col-md-4 p-0">
-                <PokemonCard key={pokemon.name} props={pokemon} />
+              <div className="col-lg-3 col-md-4 p-0" key={pokemon.name}>
+                <PokemonCard props={pokemon} />
               </div>
             ))
           ) : (

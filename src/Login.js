@@ -5,8 +5,6 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import "./styles.css";
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [user, loading, error] = useAuthState(auth);
   const navigate = useNavigate();
 
@@ -15,7 +13,10 @@ function Login() {
       // maybe trigger a loading screen
       return;
     }
-    if (user) navigate("/user");
+    if (user) {
+      navigate("/user");
+      localStorage.setItem("uid", auth.currentUser.uid);
+    }
   }, [user, loading, navigate]);
 
   return (

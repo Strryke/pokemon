@@ -18,8 +18,8 @@ function Pokedex() {
     >
       {pokemons &&
         pokemons.map((pokemon) => (
-          <div className="col-lg-3 col-md-4 p-0">
-            <PokemonCard key={pokemon.name} props={pokemon} />
+          <div className="col-lg-3 col-md-4 p-0" key={pokemon.id}>
+            <PokemonCard props={pokemon} />
           </div>
         ))}
     </div>

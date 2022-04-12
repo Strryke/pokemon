@@ -26,7 +26,7 @@ function NewPokemon() {
     if (guess == number) {
       setOutput(`You are correct! ${pokemon.name} has been captured!`);
       sendPokemon(pokemon);
-      // setTimeout(() => window.location.reload(), 2000);
+      setTimeout(() => window.location.reload(), 3000);
     } else if (guess > number) {
       setOutput("Your guess is too high!");
       if (numberGuess >= 3) {

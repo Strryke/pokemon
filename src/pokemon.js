@@ -7,6 +7,7 @@ const getPokemon = async () => {
   );
   response.data.results.forEach((pokemon) => {
     pokedex.push({
+      id: Math.random(),
       name: pokemon.name,
       url: pokemon.url,
     });

@@ -7,7 +7,12 @@ import {
   setDoc,
   getDoc,
 } from "firebase/firestore";
-import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnjAax_1hRuw81gyXOrqIwIEeQa2iNoYA",
@@ -37,19 +42,30 @@ const signInWithGoogle = async () => {
 };
 
 async function sendPokemon(pokemon) {
-  const ref = doc(db, "users", auth.currentUser.uid);
+  const uid = localStorage.getItem("uid");
+  const ref = doc(db, "users", uid);
   const docSnap = await getDoc(ref);
   if (docSnap.exists()) {
+    console.log(pokemon, uid);
     await updateDoc(ref, {
       pokemons: arrayUnion(pokemon),
     });
   } else {
-    await setDoc(doc(db, "users", auth.currentUser.uid), { pokemon });
+    console.log(uid);
+    await setDoc(ref, {
+      pokemons: [pokemon],
+    });
+    // await updateDoc(ref, {
+    //   pokemons: arrayUnion(pokemon),
+    // });
   }
 }
 
 async function getPokemon() {
-  const ref = doc(db, "users", auth.currentUser.uid);
+  const uid = localStorage.getItem("uid");
+  // console.log(typeof uid);
+  // console.log(typeof auth.currentUser.uid);
+  const ref = doc(db, "users", uid);
   const docSnap = await getDoc(ref);
   if (docSnap.exists()) {
     return docSnap.data().pokemons;
@@ -63,6 +79,7 @@ function SignOut() {
   const onSignOut = () => {
     auth.signOut();
     window.location.replace("/");
+    localStorage.clear();
   };
   return (
     <button className="nav-link active btn" onClick={onSignOut}>
