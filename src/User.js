@@ -21,12 +21,15 @@ export default function User() {
           className="wrapper row justify-content-start"
           style={{ backgroundColor: "lightgray" }}
         >
-          {pokemons &&
+          {pokemons ? (
             pokemons.map((pokemon) => (
               <div className="col-lg-3 col-md-4 p-0">
                 <PokemonCard key={pokemon.name} props={pokemon} />
               </div>
-            ))}
+            ))
+          ) : (
+            <div>You have no Pokemon yet! :(</div>
+          )}
         </div>
       </div>
     </>

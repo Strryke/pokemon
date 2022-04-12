@@ -7,13 +7,7 @@ import {
   setDoc,
   getDoc,
 } from "firebase/firestore";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup,
-} from "firebase/auth";
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDnjAax_1hRuw81gyXOrqIwIEeQa2iNoYA",
@@ -50,7 +44,7 @@ async function sendPokemon(pokemon) {
       pokemons: arrayUnion(pokemon),
     });
   } else {
-    await setDoc(doc(db, "users", auth.currentUser.uid), pokemon);
+    await setDoc(doc(db, "users", auth.currentUser.uid), { pokemon });
   }
 }
 

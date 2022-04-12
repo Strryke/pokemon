@@ -10,7 +10,6 @@ function Pokedex() {
     }
     fetchData();
   }, []);
-  console.log("pls work");
 
   return (
     <div
